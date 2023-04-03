@@ -19,36 +19,59 @@ There are many different methods for feature engineering and feature selection, 
 
 - Here are some examples of **feature engineering**:
 
-  - Creating new features by combining existing features. *For example, you could create a feature - that is the sum of two other features.*
+  - Creating new features by combining existing features. 
+    >**For example** -  you could create a feature - that is the sum of two other features.
 
-  - Creating new features by transforming existing features. *For example, you could create a feature that is the square root of another feature.*
+  - Creating new features by transforming existing features. 
+     >**For example** -  you could create a feature that is the square root of another feature.
 
-  - Creating new features by discretizing existing features. *For example, you could create a feature that is the binary indicator of whether a value is greater than a certain threshold.*
+  - Creating new features by discretizing existing features. 
+     >**For example** -  you could create a feature that is the binary indicator of whether a value is greater than a certain threshold.
 
-- Here are some examples of **feature selection**:
+### Summary of the main classes and functions for feature selection in Scikit-learn:
 
-  - **Univariate feature selection**: This is the process of selecting features based on their univariate statistics, such as the mean, median, or standard deviation.
+| Class/Function | Description |
+| --- | --- |
+| `SelectKBest` | Selects the top K features based on a scoring function |
+| `SelectPercentile` | Selects the top percentile of features based on a scoring function |
+| `SelectFromModel` | Selects features based on importance weights computed by a supervised model |
+| `RFECV` | Performs recursive feature elimination with cross-validation |
+| `SequentialFeatureSelector` | Performs forward or backward feature selection with cross-validation |
+| `mutual_info_regression` | Computes the mutual information between each feature and a continuous target variable |
+| `mutual_info_classification` | Computes the mutual information between each feature and a categorical target variable |
+| `f_regression` | Computes the F-value between each feature and a continuous target variable |
+| `chi2` | Computes the chi-squared statistic between each feature and a categorical target variable |
 
-  - **Recursive feature elimination**: This is a greedy algorithm that iteratively removes features that do not contribute to the model's performance.
-
-  - **LASSO**: This is a penalized regression algorithm that penalizes models for having too many features.
-
-  Feature engineering and feature selection are both important tasks in machine learning. They can be used to improve the performance of machine learning models by creating features that are more relevant to the target variable and by reducing the number of features that need to be processed.
-
-
-- Here are some of the **benefits of feature engineering**:
-
-  - **Improved model performance**: Feature engineering can help to improve the performance of machine learning models by creating features that are more relevant to the target variable. This can lead to more accurate and reliable models.
-
-  - **Reduced overfitting**: Feature engineering can help to reduce overfitting by creating features that are more robust to noise in the data. This can lead to more generalizable models.
-
-  - **Improved interpretability**: Feature engineering can help to improve the interpretability of machine learning models by creating features that are more meaningful to humans. This can help to make models more useful for decision-making.
-
-However, it is important to note that feature engineering is not always necessary. In some cases, machine learning models can perform well without any feature engineering. Additionally, feature engineering can be time-consuming and expensive. Therefore, it is important to carefully consider whether feature engineering is necessary for a particular machine learning project.
+These classes and functions are part of the `sklearn.feature_selection` module and can be used to select a subset of features from a dataset based on various criteria.
 
 
+### Most commonly used feature selection methods in Scikit-learn:
 
-Scikit-learn is a popular machine learning library in Python that provides a number of tools for `feature selection` and `feature engineering`. The following are some of the most commonly used methods:
+| Method | Description | Scikit-learn Class |
+| --- | --- | --- |
+| Filter methods | Select features based on a statistical measure | `SelectKBest`, `SelectPercentile`, `f_classif`, `f_regression`, `chi2`, `mutual_info_classif`, `mutual_info_regression` |
+| Wrapper methods | Select features based on the performance of a model trained with different subsets of features | `RFECV`, `SequentialFeatureSelector` |
+| Embedded methods | Select features based on their importance as learned by a model | `SelectFromModel`, `LassoCV`, `RidgeCV`, `ElasticNetCV`, `RandomForestClassifier`, `RandomForestRegressor`, `GradientBoostingClassifier`, `GradientBoostingRegressor`, `XGBClassifier`, `XGBRegressor` |
+
+- **Filter methods** rank features based on a statistical measure that assesses the strength of the relationship between each feature and the target variable. Examples of such measures include the F-value (for continuous target variables), the chi-squared statistic (for categorical target variables), and mutual information (for both continuous and categorical target variables). These methods are computationally efficient and can be used as a preprocessing step to reduce the dimensionality of the data before applying a more complex model.
+
+- **Wrapper methods** evaluate the performance of a model trained with different subsets of features and select the subset that leads to the best performance. Examples of such methods include recursive feature elimination (RFE) and sequential feature selection (SFS). These methods are computationally more expensive than filter methods but can lead to better performance if the optimal subset of features is highly dependent on the specific task and dataset.
+
+- **Embedded methods** incorporate feature selection as part of the model training process. Examples of such methods include regularization (e.g., L1 and L2 regularization in linear models), tree-based methods (e.g., random forests and gradient boosting), and XGBoost. These methods can be computationally efficient and often lead to better performance than filter methods but can be sensitive to the choice of hyperparameters and model architecture.
+
+
+ ### Charts that might be useful for `feature selection` and `feature engineering`
+
+| Chart | Description |
+| --- | --- |
+| Correlation matrix heatmap | A correlation matrix heatmap can help you visualize the correlation between different features. This can be useful for identifying redundant features that can be removed to reduce the dimensionality of the data. |
+| Box plot | A box plot can help you identify outliers and understand the distribution of a feature. This can be useful for deciding how to handle outliers and for identifying features that might need to be transformed or normalized. |
+| Scatter plot matrix | A scatter plot matrix can help you visualize the relationship between different features. This can be useful for identifying features that are highly correlated with the target variable and for identifying interactions between features. |
+| Decision tree | A decision tree can be used to visualize the importance of different features in a predictive model. This can be useful for understanding which features are most important for predicting the target variable and for identifying features that can be pruned to improve the model's performance. |
+| Principal component analysis (PCA) plot | A PCA plot can be used to visualize the relationship between different features in a high-dimensional dataset. This can be useful for identifying clusters of similar observations and for understanding the underlying structure of the data. |
+| Feature importance plot | A feature importance plot can be used to visualize the importance of different features in a predictive model. This can be useful for understanding which features are most important for predicting the target variable and for identifying features that can be pruned to improve the model's performance. |
+
+
 
 - **Recursive feature elimination (RFE)**: This method starts with all of the features and then iteratively removes the least important features until a specified number of features remain.
 
