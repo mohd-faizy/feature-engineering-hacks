@@ -1,6 +1,15 @@
-# Feature Engineering
+# Feature Engineering & Feature selection
 
-Feature engineering and feature selection are both important data preparation tasks in machine learning. Feature engineering is the process of creating new features from existing data, while feature selection is the process of selecting a subset of features from a dataset.
+### What is feature engineering & feature selection?
+
+
+`Feature engineering` and `feature selection` are both important data preparation tasks in machine learning.
+
+>Feature engineering is the process of creating new features from existing data, while feature selection is the process of selecting a subset of features from a dataset.
+
+<p align='center'>
+  <a href="#"><img src='https://assets-global.website-files.com/620d42e86cb8ec4d0839e59d/6230e9ee021b250dd3710f8e_61ca4fbcc80819e696ba0ee9_Feature-Engineering-Machine-Learning-Diagram.png'></a>
+</p>
 
 Feature engineering can be used to improve the performance of machine learning models by creating features that are more relevant to the target variable. For example, if you are trying to predict whether a customer will churn, you might create a feature that is the number of days since the customer last made a purchase.
 
@@ -8,33 +17,32 @@ Feature selection can be used to improve the performance of machine learning mod
 
 There are many different methods for feature engineering and feature selection, and the best approach will vary depending on the data and the machine learning algorithm being used. However, both feature engineering and feature selection are important tasks that can improve the performance of machine learning models.
 
-Here are some examples of feature engineering:
+- Here are some examples of **feature engineering**:
 
-- Creating new features by combining existing features. *For example, you could create a feature - that is the sum of two other features.*
-- Creating new features by transforming existing features. *For example, you could create a feature that is the square root of another feature.*
-- Creating new features by discretizing existing features. *For example, you could create a feature that is the binary indicator of whether a value is greater than a certain threshold.*
+  - Creating new features by combining existing features. *For example, you could create a feature - that is the sum of two other features.*
 
-Here are some examples of feature selection:
+  - Creating new features by transforming existing features. *For example, you could create a feature that is the square root of another feature.*
 
-- **Univariate feature selection**: This is the process of selecting features based on their univariate statistics, such as the mean, median, or standard deviation.
+  - Creating new features by discretizing existing features. *For example, you could create a feature that is the binary indicator of whether a value is greater than a certain threshold.*
 
-- **Recursive feature elimination**: This is a greedy algorithm that iteratively removes features that do not contribute to the model's performance.
+- Here are some examples of **feature selection**:
 
-- **LASSO**: This is a penalized regression algorithm that penalizes models for having too many features.
+  - **Univariate feature selection**: This is the process of selecting features based on their univariate statistics, such as the mean, median, or standard deviation.
 
-Feature engineering and feature selection are both important tasks in machine learning. They can be used to improve the performance of machine learning models by creating features that are more relevant to the target variable and by reducing the number of features that need to be processed.
+  - **Recursive feature elimination**: This is a greedy algorithm that iteratively removes features that do not contribute to the model's performance.
 
-### What is feature engineering?
+  - **LASSO**: This is a penalized regression algorithm that penalizes models for having too many features.
 
-Feature engineering is important because it can help to improve the performance of machine learning models. By creating new features that are more relevant to the target variable, feature engineering can help to make models more accurate and reliable. Additionally, feature engineering can help to reduce the number of features that need to be processed, which can improve the efficiency of machine learning algorithms.
+  Feature engineering and feature selection are both important tasks in machine learning. They can be used to improve the performance of machine learning models by creating features that are more relevant to the target variable and by reducing the number of features that need to be processed.
 
-Here are some of the benefits of feature engineering:
 
-- **Improved model performance**: Feature engineering can help to improve the performance of machine learning models by creating features that are more relevant to the target variable. This can lead to more accurate and reliable models.
+- Here are some of the **benefits of feature engineering**:
 
-- **Reduced overfitting**: Feature engineering can help to reduce overfitting by creating features that are more robust to noise in the data. This can lead to more generalizable models.
+  - **Improved model performance**: Feature engineering can help to improve the performance of machine learning models by creating features that are more relevant to the target variable. This can lead to more accurate and reliable models.
 
-- **Improved interpretability**: Feature engineering can help to improve the interpretability of machine learning models by creating features that are more meaningful to humans. This can help to make models more useful for decision-making.
+  - **Reduced overfitting**: Feature engineering can help to reduce overfitting by creating features that are more robust to noise in the data. This can lead to more generalizable models.
+
+  - **Improved interpretability**: Feature engineering can help to improve the interpretability of machine learning models by creating features that are more meaningful to humans. This can help to make models more useful for decision-making.
 
 However, it is important to note that feature engineering is not always necessary. In some cases, machine learning models can perform well without any feature engineering. Additionally, feature engineering can be time-consuming and expensive. Therefore, it is important to carefully consider whether feature engineering is necessary for a particular machine learning project.
 
@@ -135,38 +143,33 @@ Scikit-learn is a popular machine learning library in Python that provides a num
   ```
 
 
-Once you have `selected a feature selection method`, you can use it to select the features to include in your model. Scikit-learn provides a number of tools for feature engineering, including:
+- Once you have `selected a feature selection method`, you can use it to select the features to include in your model. Scikit-learn provides a number of tools for feature engineering, including:
 
-- **Polynomial features**: These features are created by taking the powers of existing features. For example, if you have a feature called "age", you could create a polynomial feature called "age^2".
+  - **Polynomial features**: These features are created by taking the powers of existing features. For example, if you have a feature called "age", you could create a polynomial feature called "age^2".
 
-- **Interaction features**: These features are created by taking the products of existing features. For example, if you have features called "age" and "gender", you could create an interaction feature called "age*gender".
+  - **Interaction features**: These features are created by taking the products of existing features. For example, if you have features called "age" and "gender", you could create an interaction feature called "age*gender".
 
-- **Time series features**: These features are created by taking the values of a feature over time. For example, if you have a feature called "sales", you could create a time series feature called "sales_last_week".
+  - **Time series features**: These features are created by taking the values of a feature over time. For example, if you have a feature called "sales", you could create a time series feature called "sales_last_week".
 
-Once you have `engineered the features`, you can use them to train your model. Scikit-learn provides a number of tools for model training, including:
+- Once you have `engineered the features`, you can use them to train your model. Scikit-learn provides a number of tools for model training, including:
 
-- **Linear regression**: This is a simple model that can be used to predict a continuous target variable.
+  - **Linear regression**: This is a simple model that can be used to predict a continuous target variable.
 
-- **Logistic regression**: This is a model that can be used to predict a binary target variable.
+  - **Logistic regression**: This is a model that can be used to predict a binary target variable.
 
-- **Decision trees**: These are models that can be used to predict both continuous and binary target variables.
+  - **Decision trees**: These are models that can be used to predict both continuous and binary target variables.
 
-- **Random forests**: These are models that are similar to decision trees, but they are more robust to overfitting.
+  - **Random forests**: These are models that are similar to decision trees, but they are more robust to overfitting.
 
-Once you have `trained your model`, you can evaluate its performance. Scikit-learn provides a number of tools for model evaluation, including:
+- Once you have `trained your model`, you can evaluate its performance. Scikit-learn provides a number of tools for model evaluation, including:
 
-- **Accuracy**: This is the percentage of instances that the model correctly predicts.
+  - **Accuracy**: This is the percentage of instances that the model correctly predicts.
 
-- **Precision**: This is the percentage of instances that the model predicts as positive that are actually positive.
+  - **Precision**: This is the percentage of instances that the model predicts as positive that are actually positive.
 
-- **Recall**: This is the percentage of instances that are actually positive that the model predicts as positive.
+  - **Recall**: This is the percentage of instances that are actually positive that the model predicts as positive.
 
-- **F1 score**: This is a measure of the model's overall performance. It is calculated as the harmonic mean of the precision and recall.Feature selection and feature engineering are important steps in machine learning. By selecting the right features and engineering them correctly, you can improve the performance of your model.
-
-
-
-### Why is feature engineering important?
-Feature engineering is important because it can improve the performance of machine learning models. By creating features that are more predictive of the target variable, you can make your models more accurate and reliable.
+  - **F1 score**: This is a measure of the model's overall performance. It is calculated as the harmonic mean of the precision and recall.Feature selection and feature engineering are important steps in machine learning. By selecting the right features and engineering them correctly, you can improve the performance of your model.
 
 ### How to use this repository
 
@@ -185,7 +188,7 @@ To get started, you can either clone the repository or download the `ZIP file`. 
 This repository is open source and contributions are welcome. If you have any ideas for hacks or tips, or if you find any errors, please feel free to open an issue or submit a pull request.
 
 ### License
-This repository is licensed under the MIT License.
+This repository is licensed under the [MIT License](https://github.com/mohd-faizy/feature-engineering-hacks/blob/main/LICENSE).
 
 #### Thanks for checking out this repository! I hope you find it helpful.
 
@@ -205,3 +208,5 @@ This repository is licensed under the MIT License.
 [twitter]: https://twitter.com/F4izy
 [linkedin]: https://www.linkedin.com/in/mohd-faizy/
 [Portfolio]: https://mohdfaizy.com/
+
+
