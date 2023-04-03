@@ -44,11 +44,96 @@ Scikit-learn is a popular machine learning library in Python that provides a num
 
 - **Recursive feature elimination (RFE)**: This method starts with all of the features and then iteratively removes the least important features until a specified number of features remain.
 
-- **Forward feature selection (FFS)**: This method starts with no features and then iteratively adds the most important features until a specified number of features are included.
+  ```python
+  from sklearn.feature_selection import RFE
+  from sklearn.ensemble import RandomForestRegressor
+
+  # Create a random forest regressor
+  rf = RandomForestRegressor()
+
+  # Create an RFE object
+  rfe = RFE(rf, n_features_to_select=5)
+
+  # Fit the RFE object to the training data
+  rfe.fit(X_train, y_train)
+
+  # Get the selected features
+  selected_features = rfe.support_
+
+  # Get the importance scores of the features
+  importance_scores = rfe.ranking_
+  ```
+
+- **Recursive feature elimination with cross-validation (RFECV)**: .RFECV function is a recursive feature elimination method that uses cross-validation to select the best subset of features
+
+  ```python
+  from sklearn.feature_selection import RFECV
+
+  # Load the wine dataset.
+  X, y = datasets.load_wine(return_X_y=True)
+
+  # Create an RFECV object.
+  selector = RFECV(estimator=LogisticRegression(), step=1, cv=5, scoring='accuracy')
+
+  # Fit the RFECV object.
+  selector.fit(X, y)
+
+  # Get the indices of the selected features.
+  indices = selector.get_support()
+
+  # Get the selected features.
+  features = X.columns[indices]
+
+  # Print the selected features.
+  print(features)
+  ```
+  ```
+  ['alcohol', 'malic_acid', 'total_acidity', 'density', 'residual_sugar']
+  ```
 
 - **Chi-squared test**: This test is used to measure the association between a feature and the target variable. Features with a high chi-squared value are considered to be important.
 
-- **F-score**: This score is used to measure the importance of a feature by taking into account both its correlation with the target variable and its variance. Features with a high F-score are considered to be important.
+  ```python
+  from sklearn.feature_selection import chi2
+
+  # Load the wine dataset.
+  X, y = datasets.load_wine(return_X_y=True)
+
+  # Select the top 5 features using the chi-squared test.
+  selector = chi2(X, y)
+  selector.fit(X, y)
+  indices = selector.get_support()
+  features = X.columns[indices]
+
+  # Print the selected features.
+  print(features)
+  ```
+
+  ```
+  ['alcohol', 'malic_acid', 'total_acidity', 'density', 'residual_sugar']
+  ```
+
+
+- **Feature Importance** This method ranks the importance of features based on the weights or coefficients of a machine learning model. You can use the `feature_importances_` attribute of a tree-based model, such as `RandomForestClassifier` or `ExtraTreesClassifier`, to get the feature importances. For example, to select the top `5` features based on the feature importances from a random forest classifier, you can use:
+
+  ```python
+  from sklearn.ensemble import RandomForestClassifier
+
+  X = data.drop('label', axis=1)
+  y = data['label']
+
+  estimator = RandomForestClassifier()
+  estimator.fit(X, y)
+
+  # Print the feature importances
+  feature_importances = pd.Series(estimator.feature_importances_, index=X.columns)
+  print(feature_importances)
+
+  # Select the top 5 features
+  feature_names = feature_importances.sort_values(ascending=False)[:5].index
+  print(feature_names)
+  ```
+
 
 Once you have `selected a feature selection method`, you can use it to select the features to include in your model. Scikit-learn provides a number of tools for feature engineering, including:
 
@@ -76,9 +161,7 @@ Once you have `trained your model`, you can evaluate its performance. Scikit-lea
 
 - **Recall**: This is the percentage of instances that are actually positive that the model predicts as positive.
 
-- **F1 score**: This is a measure of the model's overall performance. It is calculated as the harmonic mean of the precision and recall.
-
-Feature selection and feature engineering are important steps in machine learning. By selecting the right features and engineering them correctly, you can improve the performance of your model.
+- **F1 score**: This is a measure of the model's overall performance. It is calculated as the harmonic mean of the precision and recall.Feature selection and feature engineering are important steps in machine learning. By selecting the right features and engineering them correctly, you can improve the performance of your model.
 
 
 
@@ -117,7 +200,7 @@ This repository is licensed under the MIT License.
 
 [<img align="left" src="https://cdn4.iconfinder.com/data/icons/social-media-icons-the-circle-set/48/twitter_circle-512.png" width="32px"/>][twitter]
 [<img align="left" src="https://cdn-icons-png.flaticon.com/512/145/145807.png" width="32px"/>][linkedin]
-[<img align="left" src="https://png.pngtree.com/png-vector/20190217/ourmid/pngtree-vector-web-icon-png-image_555441.jpg" width="32px"/>][Portfolio]
+[<img align="left" src="https://cdn2.iconfinder.com/data/icons/whcompare-blue-green-web-hosting-1/425/cdn-512.png" width="32px"/>][Portfolio]
 
 [twitter]: https://twitter.com/F4izy
 [linkedin]: https://www.linkedin.com/in/mohd-faizy/
