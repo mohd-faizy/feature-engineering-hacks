@@ -33,14 +33,15 @@ There are many different methods for feature engineering and feature selection, 
 | Class/Function | Description |
 | --- | --- |
 | `SelectKBest` | Selects the top K features based on a scoring function |
+| `chi2` | This test is used to measure the association between a feature and the target variable. Features with a high chi-squared value are considered to be important.|
 | `SelectPercentile` | Selects the top percentile of features based on a scoring function |
 | `SelectFromModel` | Selects features based on importance weights computed by a supervised model |
-| `RFECV` | Performs recursive feature elimination with cross-validation |
+| `RFE` | Recursive feature elimination method starts with all of the features and then iteratively removes the least important features until a specified number of features remain. |
+| `RFECV` | RFECV function is a recursive feature elimination method that uses cross-validation to select the best subset of features |
 | `SequentialFeatureSelector` | Performs forward or backward feature selection with cross-validation |
-| `mutual_info_regression` | Computes the mutual information between each feature and a continuous target variable |
+| `mutual_info_regression` | `mutual_info_regression` is a function in scikit-learn's feature selection module that computes mutual information between each feature and a continuous target variable. Mutual information measures the amount of information that can be obtained about one variable by observing another variable. In the context of feature selection, mutual information can be used to identify the features that are most informative about the target variable.`mutual_info_regression`takes two input arrays: the feature matrix `X` and the target variable `y`. It returns an array of mutual information scores, where each score corresponds to a feature in `X`. The higher the score, the more informative the feature is about the target variable. |
 | `mutual_info_classification` | Computes the mutual information between each feature and a categorical target variable |
-| `f_regression` | Computes the F-value between each feature and a continuous target variable |
-| `chi2` | Computes the chi-squared statistic between each feature and a categorical target variable |
+| `f_regression` | `f_regression` is a function in scikit-learn's feature selection module that computes the `F-value` and `p-value` for each feature in a dataset with respect to a continuous target variable. **The F-value measures the ratio of variance between the target variable and the feature variable, while the p-value indicates the significance of the F-value.** In the context of feature selection, F-values and p-values can be used to identify the features that are most correlated with the target variable. it takes two input arrays: the feature `matrix X` and the target variable `y`. It returns two arrays: the `F-values` and the `p-values`, where each value corresponds to a feature in `X`. The higher the `F-value`, the more correlated the feature is with the target variable, while the lower the `p-value`, the more significant the correlation is.|
 
 These classes and functions are part of the `sklearn.feature_selection` module and can be used to select a subset of features from a dataset based on various criteria.
 
@@ -71,9 +72,96 @@ These classes and functions are part of the `sklearn.feature_selection` module a
 | Principal component analysis (PCA) plot | A PCA plot can be used to visualize the relationship between different features in a high-dimensional dataset. This can be useful for identifying clusters of similar observations and for understanding the underlying structure of the data. |
 | Feature importance plot | A feature importance plot can be used to visualize the importance of different features in a predictive model. This can be useful for understanding which features are most important for predicting the target variable and for identifying features that can be pruned to improve the model's performance. |
 
+### Useful Code snippet
+
+- `SelectKBest`
+  ```python
+  from sklearn.datasets import load_iris
+  from sklearn.feature_selection import SelectKBest
+  from sklearn.feature_selection import chi2
+
+  # Load iris dataset
+  iris = load_iris()
+  X, y = iris.data, iris.target
+
+  # Apply SelectKBest feature selection
+  selector = SelectKBest(chi2, k=2)
+  X_new = selector.fit_transform(X, y)
+
+  # Print selected features
+  print(selector.get_support(indices=True))
+  ```
+  We then apply the `SelectKBest` feature selection method with the `chi2` scoring function to select the top 2 features. Finally, we transform the original data into the new feature space using the fit_transform method and print the indices of the selected features using the get_support method
 
 
-- **Recursive feature elimination (RFE)**: This method starts with all of the features and then iteratively removes the least important features until a specified number of features remain.
+
+- `Chi-squared test`
+  ```python
+  from sklearn.feature_selection import chi2
+
+  # Load the wine dataset.
+  X, y = datasets.load_wine(return_X_y=True)
+
+  # Select the top 5 features using the chi-squared test.
+  selector = chi2(X, y)
+  selector.fit(X, y)
+  indices = selector.get_support()
+  features = X.columns[indices]
+
+  # Print the selected features.
+  print(features)
+  ```
+  ```
+  ['alcohol', 'malic_acid', 'total_acidity', 'density', 'residual_sugar']
+  ```
+
+
+
+- `feature_selection.SelectPercentile`
+  ```python
+  from sklearn.datasets import load_iris
+  from sklearn.feature_selection import SelectPercentile
+  from sklearn.feature_selection import f_classif
+
+  # Load iris dataset
+  iris = load_iris()
+  X, y = iris.data, iris.target
+
+  # Apply SelectPercentile feature selection
+  selector = SelectPercentile(f_classif, percentile=50)
+  X_new = selector.fit_transform(X, y)
+
+  # Print selected features
+  print(selector.get_support(indices=True))
+  ```
+  We then apply the `SelectPercentile` feature selection method with the `f_classif` scoring function to select the top `50%` of features. Finally, we transform the original data into the new feature space using the fit_transform method and print the indices of the selected features using the `get_support` method.
+
+
+
+
+- `SelectFromModel`
+  ```python
+  from sklearn.datasets import load_iris
+  from sklearn.feature_selection import SelectFromModel
+  from sklearn.linear_model import LogisticRegression
+
+  # Load iris dataset
+  iris = load_iris()
+  X, y = iris.data, iris.target
+
+  # Apply SelectFromModel feature selection
+  selector = SelectFromModel(LogisticRegression(penalty='l1', C=0.1))
+  X_new = selector.fit_transform(X, y)
+
+  # Print selected features
+  print(selector.get_support(indices=True))
+
+  ```
+  We apply the `SelectFromModel` feature selection method with a `LogisticRegression` model that uses `L1` regularization with a penalty parameter of `0.1`. Finally, we transform the original data into the new feature space using the `fit_transform` method and print the indices of the selected features using the `get_support method`. Note that the model used in `SelectFromModel` can be any supervised learning model that has a `coef_` or `feature_importances_` attribute after fitting.
+
+
+
+- `Recursive feature elimination(RFE)`
 
   ```python
   from sklearn.feature_selection import RFE
@@ -95,8 +183,7 @@ These classes and functions are part of the `sklearn.feature_selection` module a
   importance_scores = rfe.ranking_
   ```
 
-- **Recursive feature elimination with cross-validation (RFECV)**: .RFECV function is a recursive feature elimination method that uses cross-validation to select the best subset of features
-
+- `Recursive feature elimination with cross-validation (RFECV)`
   ```python
   from sklearn.feature_selection import RFECV
 
@@ -122,27 +209,82 @@ These classes and functions are part of the `sklearn.feature_selection` module a
   ['alcohol', 'malic_acid', 'total_acidity', 'density', 'residual_sugar']
   ```
 
-- **Chi-squared test**: This test is used to measure the association between a feature and the target variable. Features with a high chi-squared value are considered to be important.
+
+- `SequentialFeatureSelector`
+  ```python
+  from sklearn.datasets import load_iris
+  from sklearn.feature_selection import SequentialFeatureSelector
+  from sklearn.neighbors import KNeighborsClassifier
+
+  # Load iris dataset
+  iris = load_iris()
+  X, y = iris.data, iris.target
+
+  # Apply SequentialFeatureSelector feature selection
+  selector = SequentialFeatureSelector(KNeighborsClassifier(n_neighbors=3), n_features_to_select=2)
+  X_new = selector.fit_transform(X, y)
+
+  # Print selected features
+  print(selector.get_support(indices=True))
+  ```
+  we apply the `SequentialFeatureSelector` feature selection method with a `KNeighborsClassifier` model that uses `3` nearest neighbors and select the top `2` features using `n_features_to_select`. Finally, we transform the original data into the new feature space using the `fit_transform` method and print the indices of the selected features using the `get_support` method. Note that the model used in `SequentialFeatureSelector` can be any supervised learning model that has a `coef_` or `feature_importances_` attribute after fitting.
+
+
+-  `mutual_info_regression`
 
   ```python
-  from sklearn.feature_selection import chi2
+  from sklearn.datasets import load_diabetes
+  from sklearn.feature_selection import SelectKBest, mutual_info_regression
 
-  # Load the wine dataset.
-  X, y = datasets.load_wine(return_X_y=True)
+  # Load the diabetes dataset
+  X, y = load_diabetes(return_X_y=True)
 
-  # Select the top 5 features using the chi-squared test.
-  selector = chi2(X, y)
-  selector.fit(X, y)
-  indices = selector.get_support()
-  features = X.columns[indices]
+  # Select the top 3 features using mutual information regression
+  selector = SelectKBest(mutual_info_regression, k=3)
+  X_new = selector.fit_transform(X, y)
 
-  # Print the selected features.
-  print(features)
-  ```
+  # Print the indices of the selected features
+  print(selector.get_support(indices=True))
 
   ```
-  ['alcohol', 'malic_acid', 'total_acidity', 'density', 'residual_sugar']
+  In this example, we use `mutual_info_regression` as the scoring function in `SelectKBest` to select the top `3` features from the diabetes dataset. The `get_support` method is used to retrieve the indices of the selected features.
+
+
+- `mutual_info_classification`
+
+  ```python
+  from sklearn.datasets import load_breast_cancer
+  from sklearn.feature_selection import SelectKBest, mutual_info_classification
+
+  # Load the breast cancer dataset
+  X, y = load_breast_cancer(return_X_y=True)
+
+  # Select the top 5 features using mutual information classification
+  selector = SelectKBest(mutual_info_classification, k=5)
+  X_new = selector.fit_transform(X, y)
+
+  # Print the indices of the selected features
+  print(selector.get_support(indices=True))
+
   ```
+  In this example, we use `mutual_info_classification` as the scoring function in SelectKBest to select the top `5` features from the breast cancer dataset. The `get_support` method is used to retrieve the indices of the selected features. Note that `mutual_info_classification` is appropriate when the target variable is categorical, such as in a classification problem. If the target variable is continuous,`mutual_info_regression` should be used instead.
+
+- `f_regression`
+  ```python
+  from sklearn.datasets import load_diabetes
+  from sklearn.feature_selection import SelectKBest, f_regression
+
+  # Load the diabetes dataset
+  X, y = load_diabetes(return_X_y=True)
+
+  # Select the top 3 features using F-regression
+  selector = SelectKBest(f_regression, k=3)
+  X_new = selector.fit_transform(X, y)
+
+  # Print the indices of the selected features
+  print(selector.get_support(indices=True))
+  ```
+  In this example, we use `f_regression` as the scoring function in `SelectKBest` to select the top `3` features from the diabetes dataset. The `get_support` method is used to retrieve the indices of the selected features. Note that `f_regression` is appropriate when the target variable is continuous. If the target variable is categorical, `chi2` or `mutual_info_classif` should be used instead.
 
 
 - **Feature Importance** This method ranks the importance of features based on the weights or coefficients of a machine learning model. You can use the `feature_importances_` attribute of a tree-based model, such as `RandomForestClassifier` or `ExtraTreesClassifier`, to get the feature importances. For example, to select the top `5` features based on the feature importances from a random forest classifier, you can use:
