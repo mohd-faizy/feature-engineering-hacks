@@ -231,23 +231,22 @@ These classes and functions are part of the `sklearn.feature_selection` module a
 
 
 -  `mutual_info_regression`
+    ```python
+    from sklearn.datasets import load_diabetes
+    from sklearn.feature_selection import SelectKBest, mutual_info_regression
 
-  ```python
-  from sklearn.datasets import load_diabetes
-  from sklearn.feature_selection import SelectKBest, mutual_info_regression
+    # Load the diabetes dataset
+    X, y = load_diabetes(return_X_y=True)
 
-  # Load the diabetes dataset
-  X, y = load_diabetes(return_X_y=True)
+    # Select the top 3 features using mutual information regression
+    selector = SelectKBest(mutual_info_regression, k=3)
+    X_new = selector.fit_transform(X, y)
 
-  # Select the top 3 features using mutual information regression
-  selector = SelectKBest(mutual_info_regression, k=3)
-  X_new = selector.fit_transform(X, y)
+    # Print the indices of the selected features
+    print(selector.get_support(indices=True))
 
-  # Print the indices of the selected features
-  print(selector.get_support(indices=True))
-
-  ```
-  In this example, we use `mutual_info_regression` as the scoring function in `SelectKBest` to select the top `3` features from the diabetes dataset. The `get_support` method is used to retrieve the indices of the selected features.
+    ```
+    In this example, we use `mutual_info_regression` as the scoring function in `SelectKBest` to select the top `3` features from the diabetes dataset. The `get_support` method is used to retrieve the indices of the selected features.
 
 
 - `mutual_info_classification`
@@ -363,8 +362,7 @@ This repository is licensed under the [MIT License](https://github.com/mohd-faiz
   <a href="#"><img src='https://tymsai.netlify.app/resource/1.gif' height='10' width=100% alt="div"></a>
 </p>
 
-#### $\color{skyblue}{\textbf{Connect with me:}}$
-
+### $\color{skyblue}{\textbf{Connect with me:}}$
 
 [<img align="left" src="https://cdn4.iconfinder.com/data/icons/social-media-icons-the-circle-set/48/twitter_circle-512.png" width="32px"/>][twitter]
 [<img align="left" src="https://cdn-icons-png.flaticon.com/512/145/145807.png" width="32px"/>][linkedin]
