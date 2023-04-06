@@ -1,4 +1,14 @@
-# Feature Engineering & Feature selection
+![Author](https://img.shields.io/badge/author-faizy-red)
+![License](https://img.shields.io/badge/license-MIT-brightgreen)
+![Platform](https://img.shields.io/badge/platform-Visual%20Studio%20Code-blue)
+![Maintained](https://img.shields.io/maintenance/yes/2023)
+![Last Commit](https://img.shields.io/github/last-commit/mohd-faizy/feature-engineering-hacks)
+![Issues](https://img.shields.io/github/issues/mohd-faizy/feature-engineering-hacks)
+![Stars GitHub](https://img.shields.io/github/stars/mohd-faizy/feature-engineering-hacks)
+![Language](https://img.shields.io/github/languages/top/mohd-faizy/feature-engineering-hacks)
+![Size](https://img.shields.io/github/repo-size/mohd-faizy/feature-engineering-hacks)
+
+# **Feature Engineering & Feature selection**
 
 ### What is feature engineering & feature selection?
 
