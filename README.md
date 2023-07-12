@@ -38,7 +38,7 @@ There are many different methods for feature engineering and feature selection, 
   - Creating new features by discretizing existing features. 
      >**For example** -  you could create a feature that is the binary indicator of whether a value is greater than a certain threshold.
 
-### Summary of the main classes and functions for feature selection in Scikit-learn:
+### Summary of the main classes and functions for `feature_selection` in Scikit-learn:
 
 | Class/Function | Description |
 | --- | --- |
@@ -344,6 +344,21 @@ These classes and functions are part of the `sklearn.feature_selection` module a
   - **Recall**: This is the percentage of instances that are actually positive that the model predicts as positive.
 
   - **F1 score**: This is a measure of the model's overall performance. It is calculated as the harmonic mean of the precision and recall.Feature selection and feature engineering are important steps in machine learning. By selecting the right features and engineering them correctly, you can improve the performance of your model.
+
+### `sklearn.model_selection` module in scikit-learn provides several functions for model selection and evaluation. Here are some of the commonly used functions.
+
+| **Function**             | **Description**                                             |
+|----------------------|-----------------------------------------------------------------|
+| `train_test_split`   | Split the dataset into training and testing sets.               |
+| `cross_val_score`    | Perform cross-validation and return an array of scores.         |
+| `cross_validate`     | Perform cross-validation and return multiple evaluation metrics.|
+| `GridSearchCV`       | Perform an exhaustive grid search for hyperparameter tuning.    |
+| `RandomizedSearchCV` | Perform a randomized search for hyperparameter tuning.          |
+| `KFold`              | Generate K-fold cross-validation splits.                        |
+| `StratifiedKFold`    | Generate stratified K-fold cross-validation splits.             |
+| `TimeSeriesSplit`    | Generate cross-validation splits for time series data.          |
+| `ShuffleSplit`       | Generate random train/test indices for multiple iterations.     |
+
 
 ### How to use this repository
 
