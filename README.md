@@ -1,7 +1,7 @@
 ![Author](https://img.shields.io/badge/author-faizy-red)
 ![License](https://img.shields.io/badge/license-MIT-brightgreen)
 ![Platform](https://img.shields.io/badge/platform-Visual%20Studio%20Code-blue)
-![Maintained](https://img.shields.io/maintenance/yes/2023)
+![Maintained](https://img.shields.io/maintenance/yes/2024)
 ![Last Commit](https://img.shields.io/github/last-commit/mohd-faizy/feature-engineering-hacks)
 ![Issues](https://img.shields.io/github/issues/mohd-faizy/feature-engineering-hacks)
 ![Stars GitHub](https://img.shields.io/github/stars/mohd-faizy/feature-engineering-hacks)
@@ -18,7 +18,7 @@
 >Feature engineering is the process of creating new features from existing data, while feature selection is the process of selecting a subset of features from a dataset.
 
 <p align='center'>
-  <a href="#"><img src='https://assets-global.website-files.com/620d42e86cb8ec4d0839e59d/6230e9ee021b250dd3710f8e_61ca4fbcc80819e696ba0ee9_Feature-Engineering-Machine-Learning-Diagram.png'></a>
+  <a href="#"><img src='https://github.com/mohd-faizy/feature-engineering-hacks/blob/main/_img/feat-sel-flow.png'></a>
 </p>
 
 Feature engineering can be used to improve the performance of machine learning models by creating features that are more relevant to the target variable. For example, if you are trying to predict whether a customer will churn, you might create a feature that is the number of days since the customer last made a purchase.
@@ -38,7 +38,10 @@ There are many different methods for feature engineering and feature selection, 
   - Creating new features by discretizing existing features. 
      >**For example** -  you could create a feature that is the binary indicator of whether a value is greater than a certain threshold.
 
-### Summary of the main classes and functions for `feature_selection` in Scikit-learn:
+## 🛣️Roadmap
+![feature engineering & feature selection](https://github.com/mohd-faizy/feature-engineering-hacks/blob/main/_img/Feat-Engg-Sel.png)
+
+## Summary of the Some main classes and functions for `feature_selection` in Scikit-learn:
 
 | Class/Function | Description |
 | --- | --- |
@@ -56,7 +59,7 @@ There are many different methods for feature engineering and feature selection, 
 These classes and functions are part of the `sklearn.feature_selection` module and can be used to select a subset of features from a dataset based on various criteria.
 
 
-### Most commonly used feature selection methods in Scikit-learn:
+## Most commonly used feature selection methods in Scikit-learn:
 
 | Method | Description | Scikit-learn Class |
 | --- | --- | --- |
@@ -71,7 +74,7 @@ These classes and functions are part of the `sklearn.feature_selection` module a
 - **Embedded methods** incorporate feature selection as part of the model training process. Examples of such methods include regularization (e.g., L1 and L2 regularization in linear models), tree-based methods (e.g., random forests and gradient boosting), and XGBoost. These methods can be computationally efficient and often lead to better performance than filter methods but can be sensitive to the choice of hyperparameters and model architecture.
 
 
- ### Charts that might be useful for `feature selection` and `feature engineering`
+ ## Charts that might be useful for `feature selection` and `feature engineering`
 
 | Chart | Description |
 | --- | --- |
@@ -82,7 +85,7 @@ These classes and functions are part of the `sklearn.feature_selection` module a
 | Principal component analysis (PCA) plot | A PCA plot can be used to visualize the relationship between different features in a high-dimensional dataset. This can be useful for identifying clusters of similar observations and for understanding the underlying structure of the data. |
 | Feature importance plot | A feature importance plot can be used to visualize the importance of different features in a predictive model. This can be useful for understanding which features are most important for predicting the target variable and for identifying features that can be pruned to improve the model's performance. |
 
-### Useful Code snippet
+## Useful Code snippet
 
 - `SelectKBest`
   ```python
@@ -360,41 +363,31 @@ These classes and functions are part of the `sklearn.feature_selection` module a
 | `ShuffleSplit`       | Generate random train/test indices for multiple iterations.     |
 
 
-### How to use this repository
 
-This repository is organized into the following sections:
-
-- **Introduction**: This section provides an overview of feature engineering and its importance.
-- **Hacks and tips**: This section contains a collection of hacks and tips for feature engineering.
-- **Examples**: This section contains examples of how to use the hacks and tips in the previous section.
-- **Resources**: This section contains links to resources for further learning about feature engineering.
-
-### Getting started
-
-To get started, you can either clone the repository or download the `ZIP file`. Once you have the repository, you can open the README.md file in a text editor.
-
-### Contributing
+## Contributing
 This repository is open source and contributions are welcome. If you have any ideas for hacks or tips, or if you find any errors, please feel free to open an issue or submit a pull request.
 
-### License
-This repository is licensed under the [MIT License](https://github.com/mohd-faizy/feature-engineering-hacks/blob/main/LICENSE).
+## ⚖ ➤ License
 
-#### Thanks for checking out this repository! I hope you find it helpful.
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
 
----
+## ❤️ Support
 
-<p align='center'>
-  <a href="#"><img src='https://tymsai.netlify.app/resource/1.gif' height='10' width=100% alt="div"></a>
-</p>
+If you find this repository helpful, show your support by starring it! For questions or feedback, reach out on [Twitter(`X`)](https://twitter.com/F4izy).
 
-### $\color{skyblue}{\textbf{Connect with me:}}$
+#### $\color{skyblue}{\textbf{Connect with me:}}$
+
+➤ If you have questions or feedback, feel free to reach out!!!
 
 [<img align="left" src="https://cdn4.iconfinder.com/data/icons/social-media-icons-the-circle-set/48/twitter_circle-512.png" width="32px"/>][twitter]
 [<img align="left" src="https://cdn-icons-png.flaticon.com/512/145/145807.png" width="32px"/>][linkedin]
-[<img align="left" src="https://cdn2.iconfinder.com/data/icons/whcompare-blue-green-web-hosting-1/425/cdn-512.png" width="32px"/>][Portfolio]
+[<img align="left" src="https://cdn-icons-png.flaticon.com/512/2626/2626299.png" width="32px"/>][Portfolio]
 
 [twitter]: https://twitter.com/F4izy
 [linkedin]: https://www.linkedin.com/in/mohd-faizy/
-[Portfolio]: https://mohdfaizy.com/
+[Portfolio]: https://ai.stackexchange.com/users/36737/faizy?tab=profile
 
+---
+
+<img src="https://github-readme-stats.vercel.app/api?username=mohd-faizy&show_icons=true" width=380px height=200px />
 
