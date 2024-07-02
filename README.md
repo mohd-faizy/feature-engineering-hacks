@@ -8,7 +8,7 @@
 ![Language](https://img.shields.io/github/languages/top/mohd-faizy/feature-engineering-hacks)
 ![Size](https://img.shields.io/github/repo-size/mohd-faizy/feature-engineering-hacks)
 
-# **Feature Engineering & Feature selection**
+![feature engineering & feature selection](https://github.com/mohd-faizy/feature-engineering-hacks/blob/main/_img/banner.jpg)
 
 ### What is feature engineering & feature selection?
 
